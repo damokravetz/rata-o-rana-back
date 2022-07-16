@@ -7,5 +7,5 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 ActiveRecord::Base.transaction do 
-  Profile.create!(name: 'Diego Gallardo', description: 'Director Tecnico')
+  Profile.create!(name: 'Marcelo Gallardo', description: 'Director Tecnico')
 end

@@ -10,7 +10,7 @@ module Api
 
       # GET /profiles/:id
       def show
-        render json: @profile
+        render json: @profile, serializer: ProfilesShowSerializer
       end
 
       # GET /profiles/search

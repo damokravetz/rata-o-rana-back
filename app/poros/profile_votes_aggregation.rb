@@ -30,4 +30,8 @@ class ProfileVotesAggregation
   def frog_votes_ratio
    frog_votes_count.to_f / votes_count
   end
+
+  def votes_ratio
+    (rat_votes_ratio - frog_votes_ratio).abs
+   end
 end

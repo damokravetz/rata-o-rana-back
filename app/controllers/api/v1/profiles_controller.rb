@@ -14,7 +14,7 @@ module Api
       end
 
       # GET /profiles/search
-      def search # TBD
+      def search
         render json: { error: 'Endopoint TBD' }, status: :not_found
       end
 

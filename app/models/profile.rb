@@ -1,8 +1,8 @@
 class Profile < ApplicationRecord
   has_many :votes
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, :wiki_id, presence: true
+  validates :name, :wiki_id, uniqueness: true
 
   scope :random, -> { order('random()') }
   scope :ranked, lambda {

@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 ActiveRecord::Base.transaction do 
-  gallardo = Profile.create!(name: 'Marcelo Gallardo', description: 'Director Tecnico')
+  gallardo = Profile.create!(name: 'Marcelo Gallardo', description: 'Director Tecnico', wiki_id: '12345')
 
   Vote.create!(profile: gallardo, category: :frog)
   Vote.create!(profile: gallardo, category: :frog)

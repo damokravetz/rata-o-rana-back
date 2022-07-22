@@ -14,7 +14,7 @@ class ProfileWikiBuild
     {
       name: wiki_name,
       wiki_id: wiki_id,
-      image_urls: [ wiki_page_first_image_url ]
+      image_urls: wiki_page_images_urls
     }
   end
 
@@ -24,13 +24,14 @@ class ProfileWikiBuild
       @wiki_page_images ||= wiki_api.get_images(wiki_id).dig('query', 'pages', wiki_id, 'images')
     end
 
-    def wiki_page_first_image_title
-      @wiki_page_first_image_title ||=
-        wiki_page_images.find { |image| !image['title'].include?('svg') }['title']
+    def wiki_page_images_titles
+      @wiki_page_images_titles ||=
+        wiki_page_images.filter { |image| !image['title'].include?('svg') }.pluck('title')
     end
 
-    def wiki_page_first_image_url
-      @wiki_page_first_image_url ||= wiki_api.get_image_url(wiki_page_first_image_title)
-                                             .dig('query', 'pages', '-1', 'imageinfo', 0, 'url')
+    def wiki_page_images_urls
+      @wiki_page_images_urls ||= wiki_api.get_images_urls(wiki_page_images_titles)
+                                         .dig('query', 'pages').values.pluck('imageinfo')
+                                         .pluck(0).pluck('url')
     end
 end

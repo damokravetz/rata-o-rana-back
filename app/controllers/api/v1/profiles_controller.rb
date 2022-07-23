@@ -2,6 +2,7 @@ module Api
   module V1
     class ProfilesController < ApplicationController
       before_action :set_profile, only: %i[ show ]
+      before_action :search_profile, only: %i[ search ]
 
       # GET /profiles
       def index
@@ -14,8 +15,8 @@ module Api
       end
 
       # GET /profiles/search
-      def search # TBD
-        render json: { error: 'Endopoint TBD' }, status: :not_found
+      def search
+        render json: @profile, status: :ok
       end
 
       private
@@ -24,9 +25,8 @@ module Api
           @profile = Profile.find(params[:id])
         end
 
-        # Only allow a list of trusted parameters through.
-        def profile_params
-          params.fetch(:profile, {})
+        def search_profile
+          @profile = ProfileGenerator.call(squery: params.require(:q))
         end
     end
   end

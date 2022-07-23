@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_16_205628) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_22_000047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_205628) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "wiki_id", null: false
+    t.jsonb "image_urls", default: []
     t.index ["name"], name: "index_profiles_on_name", unique: true
+    t.index ["wiki_id"], name: "index_profiles_on_wiki_id", unique: true
   end
 
   create_table "votes", force: :cascade do |t|

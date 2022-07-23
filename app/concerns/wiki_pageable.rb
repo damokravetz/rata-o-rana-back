@@ -1,5 +1,5 @@
 module WikiPageable
-  # private
+  private
     attr_reader :squery
 
     def wiki_api

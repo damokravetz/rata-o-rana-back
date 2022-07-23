@@ -7,7 +7,9 @@ module WikiPageable
     end
 
     def wiki_page
-      @wiki_page ||= wiki_api.search(squery).dig('query', 'search', 0)
+      @wiki_page ||= wiki_api.search(squery).dig('query', 'search', 0).tap do |page|
+        raise ActiveRecord::RecordNotFound, "WikiPage not found for: #{squery}" if page.blank?
+      end
     end
 
     def wiki_id

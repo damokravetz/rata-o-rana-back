@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  rescue_from Errors::ApiError do |e| render_error(e) end
+  include Errors
 
   private
 
@@ -8,10 +8,6 @@ class ApplicationController < ActionController::API
     end
 
     def raise_unprocessable_entity(invalid_key, msg: nil)
-      raise Errors::UnprocessableEntity.new(msg || "Invalid '#{invalid_key.to_s}'")
-    end
-
-    def render_error(e)
-      render json: { error: e.message }, status: e.status
+      raise Errors::UnprocessableEntity, msg || "Invalid '#{invalid_key.to_s}'"
     end
 end

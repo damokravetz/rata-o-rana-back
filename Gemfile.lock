@@ -85,6 +85,7 @@ GEM
     erubi (1.10.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google_search_results (2.2.0)
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -178,6 +179,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   bootsnap
   debug
+  google_search_results
   httparty
   pg (~> 1.1)
   puma (~> 5.0)

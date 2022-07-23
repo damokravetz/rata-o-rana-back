@@ -26,7 +26,7 @@ class ProfileGenerator
     end
 
     def wiki_profile
-      @wiki_profile ||= ProfileWikiBuild.call(wiki_page:)
+      @wiki_profile ||= ProfileBuild.call(squery:, wiki_page:)
     end
 
     def wiki_page

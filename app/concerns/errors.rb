@@ -3,7 +3,7 @@ module Errors
 
   included do
     rescue_from Errors::ApiError do |e| render_error(e) end
-    rescue_from ActiveRecord::RecordNotFound do |e| render_error(NotFound.new(e.message)) end
+    # rescue_from ActiveRecord::RecordNotFound do |e| render_error(NotFound.new(e.message)) end
   end
 
   def render_error(e)

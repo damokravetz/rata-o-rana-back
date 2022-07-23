@@ -11,7 +11,7 @@ class ProfileGenerator
      profile 
   end
 
-  # private
+  private
 
     attr_reader :squery
 

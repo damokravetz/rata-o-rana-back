@@ -3,7 +3,7 @@ class WikiApi
   base_uri 'https://es.m.wikipedia.org/w/api.php'
 
   def search(squery)
-    Rails.logger.info("WikiApi: Search - #{squery}")
+    Rails.logger.info("WikiApi: search - #{squery}")
     self.class.get('/', query: { action: 'query', list: 'search', srsearch: squery, format:'json' })
   end
 
